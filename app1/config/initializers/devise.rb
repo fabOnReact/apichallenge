@@ -287,4 +287,7 @@ Devise.setup do |config|
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
   # end
+
+  # https://github.com/plataformatec/devise/wiki/Speed-up-your-unit-tests
+  config.stretches = Rails.env.test? ? 1 : 10
 end

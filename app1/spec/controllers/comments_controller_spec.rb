@@ -1,14 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
+  let(:user) { FactoryBot.create(:user)} 
   let(:comment) { instance_double("comment")}
   let(:comment_factory) { FactoryBot.create(:comment) }
   let(:comment_stub) { FactoryBot.build_stubbed(:comment) }
   let(:comment_attributes) { FactoryBot.attributes_for(:comment)}
   let(:valid_params) { {comment: { message: 'test', description: 'some test'}}}
 
-  describe "GET #index" do
-    it "returns http success" do
+  login_user
+
+  describe "GET #index" do it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
     end
@@ -42,9 +44,10 @@ RSpec.describe CommentsController, type: :controller do
       end
 
       it "render the json response" do
-        get :create, params: valid_params, as: :json
+        post :create, params: valid_params, as: :json
         expect(response).to have_http_status(:created)
-        expect(json_response[:message]).to eql(comment_stub.message) end
+        expect(json_response[:message]).to eql(comment_stub.message) 
+      end
     end
 
     context "with invalid parameters" do 

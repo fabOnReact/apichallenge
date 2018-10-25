@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
     user
-    message { "MyString" }
-    description { "MyString" }
+    message { Faker::Twitter.status[:text]  }
+    description { Faker::Team.sport }
   end
 end

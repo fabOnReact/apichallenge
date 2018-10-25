@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def index
+    @comments = Comment.find_comments params[:description]
   end
 
   def new; Comment.new; end

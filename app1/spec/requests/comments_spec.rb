@@ -13,7 +13,7 @@ RSpec.describe "Comments", type: :request do
       
     context "with valid API credentials" do
       it "redirect the user the the home page" do 
-        post "/comments", params: valid_params, headers: {"X-User-Email" => user.email, "X-User-Token" => user.authentication_token}
+        post_authorized("/comments",valid_params,user)
         expect(response.status).to be(302)
         expect(response).to redirect_to(comment_stub)
       end
@@ -31,7 +31,7 @@ RSpec.describe "Comments", type: :request do
   describe "GET /comments" do 
     context "with valid API credentials" do
       it "redirect the user the the home page" do 
-        get comments_path, headers: {"X-User-Email" => user.email, "X-User-Token" => user.authentication_token}
+        get_authorized comments_path, user
         expect(response.status).to be(200)
       end
     end

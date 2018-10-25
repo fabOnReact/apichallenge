@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
         format.json { render json: comment, status: :created, location: comment }
       else
         format.html { render action: 'new' }
+        # use null object to handle error case and record in the server log error message 
         format.json { render json: {errors: comment.errors}, status: :unprocessable_entity }
       end
     end

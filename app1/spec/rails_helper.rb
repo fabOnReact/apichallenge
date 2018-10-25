@@ -63,7 +63,8 @@ RSpec.configure do |config|
 
   # including helper methods for the request
   config.include Request::JsonHelpers, :type => :controller
-  config.extend Request::Authentication, :type => :controller 
+  config.extend Request::Authentication, :type => :controller
+  config.include Request::HttpHelpers, :type => :request
 
   # include devise helpers for testing with authentication
   config.include Devise::Test::ControllerHelpers, :type => :controller

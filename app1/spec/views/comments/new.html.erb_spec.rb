@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "comments/new.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'renders the view' do
+    assign(:comment, FactoryBot.build_stubbed(:comment) )
+    render
+    expect(rendered).to match /Find me/
+  end
 end

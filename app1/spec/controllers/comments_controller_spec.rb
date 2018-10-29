@@ -24,7 +24,9 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      allow(Comment).to receive(:find).and_return comment
+      comments = double("comments")
+      expect(controller.current_user).to receive(:comments).and_return comments
+      expect(comments).to receive(:find).with("1").and_return comment
       get :edit, params: { id: 1 }
       expect(response).to have_http_status(:success)
     end

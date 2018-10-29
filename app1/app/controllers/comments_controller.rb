@@ -28,7 +28,6 @@ class CommentsController < ApplicationController
   def edit; end
   
   def update 
-    @comment.user = current_user
     respond_to do |format|
       if @comment.update(comment_params)
         flash[:notice] = 'Comment was successfully created'
@@ -45,7 +44,7 @@ class CommentsController < ApplicationController
   def show; end
 
   private
-  def find_comment; @comment ||= Comment.find params[:id]; end
+  def find_comment; @comment ||= current_user.comments.find params[:id]; end
   def set_comment; @comment ||= Comment.new comment_params; end
   def comment_params
     params.require(:comment).permit(:message, :description) unless params[:comment].nil?

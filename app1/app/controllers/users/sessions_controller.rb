@@ -10,12 +10,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
    def create
-    respond_to do |format|
-      super do |resource|
-        format.json { render json: resource, status: :created }
-        break if format.json
-      end
-    end
+     self.resource = warden.authenticate!(auth_options)
+     sign_in(resource_name, resource)
+     render json: resource, status: :created 
    end
 
   # DELETE /resource/sign_out

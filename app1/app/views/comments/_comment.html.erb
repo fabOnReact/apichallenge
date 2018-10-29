@@ -1,1 +1,2 @@
 <p class="comments"><span>user</span> <%= comment.user.name %> <span>says</span> <%= comment.message%> <span>created the</span> <%= comment.created_at.to_date %> <span>with description</span> <%= comment.description %></p>
+<%= link_to_if(current_user.owns?(comment), "update", comment){} %>

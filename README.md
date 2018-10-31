@@ -40,5 +40,3 @@ If something is not clear, please ask.
 `curl -X POST -H "X-User-Email: tester@gmail.com" -H "X-User-Token:YourToken" -H "Accept: application/json" -H "Content-Type: application/json; charset=UTF-8" http://0.0.0.0:3000/users/sign_in`
 3. Post or update a comment via json api
 `curl -X POST -H "X-User-Email: tester@gmail.com" -H "X-User-Token:xNJJiePfhbeSnWxfv6rD" -H "Accept: application/json" -H "Content-Type: application/json; charset=UTF-8" -d '{"comment":{"message":"a test message","description":"a description"}}' http://0.0.0.0:3000/comments`
-4. Retrieve the session via json api
-5. Destroy the session via json api

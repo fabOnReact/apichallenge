@@ -1,6 +1,4 @@
 class CommentsController < ApplicationController
-  acts_as_token_authentication_handler_for User
-  before_action :authenticate_user!
   before_action :find_comment, only: [:edit, :update, :show]
   before_action :set_comment, only: [:new, :create]
 
